@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Kingsmode",
+    "slug": "kingsmode",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0f0f1a"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.kingsmode.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0f0f1a"
+      },
+      "package": "com.kingsmode.app"
+    },
+    "plugins": ["expo-secure-store"]
+  }
+}

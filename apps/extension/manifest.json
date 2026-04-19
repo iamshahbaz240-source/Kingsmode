@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Kingsmode New Tab",
+  "version": "1.0.0",
+  "description": "Focus Like a King. Greetings, tasks, deadlines & reminders on every new tab.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "notifications",
+    "alarms",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Kingsmode"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Kingsmode — Focus Like a King",
+  "short_name": "Kingsmode",
+  "description": "The ultimate productivity app with Pomodoro timer, task management, habit tracking, and deep focus tools.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "categories": ["productivity", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Focus Timer",
+      "url": "/dashboard",
+      "description": "Start a Pomodoro session"
+    },
+    {
+      "name": "Analytics",
+      "url": "/analytics",
+      "description": "View your focus stats"
+    }
+  ]
+}

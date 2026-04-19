@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark theme (default) ── */
+:root {
+  --brand-300: 196 181 253;
+  --brand-400: 167 139 250;
+  --brand-500: 139 92 246;
+  --brand-600: 124 58 237;
+  --brand-700: 109 40 217;
+  --brand-900: 76 29 149;
+
+  --dark-900: 6 6 8;
+  --dark-800: 11 11 14;
+  --dark-700: 18 18 22;
+
+  --glow: rgba(124, 58, 237, 0.35);
+  --glow-lg: rgba(124, 58, 237, 0.55);
+
+  --accent: #c8ff00;
+  --accent-dim: rgba(200, 255, 0, 0.12);
+}
+
+/* ── Golden theme ── */
+[data-theme="golden"] {
+  --brand-300: 252 211 77;
+  --brand-400: 251 191 36;
+  --brand-500: 245 158 11;
+  --brand-600: 217 119 6;
+  --brand-700: 180 83 9;
+  --brand-900: 120 53 15;
+
+  --dark-900: 8 6 0;
+  --dark-800: 14 11 0;
+  --dark-700: 22 17 0;
+
+  --glow: rgba(217, 119, 6, 0.35);
+  --glow-lg: rgba(217, 119, 6, 0.55);
+
+  --accent: #ffd700;
+  --accent-dim: rgba(255, 215, 0, 0.12);
+}
+
+/* Only animate colors, not transforms (avoid jank on hover) */
+*, *::before, *::after {
+  transition: background-color 0.4s ease, color 0.35s ease,
+              border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-dark-900 text-white font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.07); border-radius: 99px; }
+  ::selection { background: rgba(124,58,237,0.35); color: white; }
+}
+
+@layer utilities {
+
+  /* ── Glow ── */
+  .glow-brand    { box-shadow: 0 0 32px var(--glow); }
+  .glow-brand-lg { box-shadow: 0 0 64px var(--glow-lg), 0 0 128px rgba(124,58,237,0.2); }
+
+  /* ── Cards ── */
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .card:hover { border-color: rgba(255,255,255,0.12); }
+
+  .card-dark {
+    background: rgb(11,11,15);
+    border: 1px solid rgba(255,255,255,0.055);
+    border-radius: 20px;
+    transition: border-color 0.25s ease;
+  }
+  .card-dark:hover { border-color: rgba(255,255,255,0.1); }
+
+  .card-raised {
+    background: rgb(14,14,18);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.05) inset;
+  }
+
+  /* ── Glass ── */
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.09);
+  }
+
+  /* ── Typography ── */
+  .gradient-text {
+    background: linear-gradient(135deg, rgb(var(--brand-400)) 0%, rgb(var(--brand-300)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-lime {
+    background: linear-gradient(135deg, #c8ff00 0%, #86efac 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-balance { text-wrap: balance; }
+
+  /* ── Grain noise overlay ── */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+
+  /* ── Marquee ── */
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    will-change: transform;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── Shimmer button ── */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+    animation: shimmer 3.5s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%   { left: -75%; }
+    60%, 100% { left: 125%; }
+  }
+
+  /* ── Fade up animation ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Accent color ── */
+  .text-accent { color: var(--accent); }
+  .bg-accent    { background: var(--accent); }
+  .border-accent { border-color: var(--accent); }
+
+  /* ── Label style ── */
+  .label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  }
+}
