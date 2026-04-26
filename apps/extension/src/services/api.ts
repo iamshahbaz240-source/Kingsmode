@@ -1,4 +1,4 @@
-const BASE = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_API_URL) || 'http://localhost:5000/api';
+const BASE = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_API_URL) || 'https://kingsmode-api.onrender.com/api';
 
 // chrome.storage.local is async — wrap it
 const getToken = (): Promise<string | null> =>

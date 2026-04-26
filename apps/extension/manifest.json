@@ -14,7 +14,6 @@
     "webNavigation"
   ],
   "host_permissions": [
-    "http://localhost:5000/*",
     "https://*/*"
   ],
   "background": {
