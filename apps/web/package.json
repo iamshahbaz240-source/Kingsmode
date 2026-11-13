@@ -7,6 +7,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@remotion/cli": "^4.0.543",
+    "@remotion/player": "^4.0.543",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
     "gsap": "^3.15.0",
@@ -15,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
     "react-router-dom": "^6.21.0",
+    "remotion": "^4.0.543",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
